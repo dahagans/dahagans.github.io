@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">Test AJAX page</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+
+    function getRndInteger( min, max) {
+      return Math.floor(math.random() * (max - min + 1)) + min;
+    }
+    function loadData() {
+      fetch('ajax_sample.json')
+        .then(res => res.json())
+        .then(data => data.map(c => c.code))
+        .then(data => {
+          str = "<ol>"
+          for (let i = 0; i < 15; i += 1){
+            listt = getRndInteger(0, 242);
+            str += "<li>" + data[listt] + "</li>";
+          }
+          srt += "</ol>";
+            document.querySelector(".content").innerText = str;
+    });
+            
+    }
+  </script>
+</body>
+
+</html>
