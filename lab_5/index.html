@@ -279,46 +279,39 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
-
-    sessionStorage.getItem('countries_arr', JSON.stringify(countries);
+    sessionStorage.setItem('countries_arr', JSON.stringify(countries));
 
     // code provided by the professor
 
     // function that will get a radom 
-    function getRandom(){
-      min - Math.cell(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1) + m);
+    function clickMe() {
+      const json = sessionStorage.getItem('countries_arr');
+      const list = JSON.parse(json);
+
+      const nameArray = list.map((i) => i.name);
+      
+  
+      
+      const instructions = document.querySelector('.instructions');
+      instructions.innerHTML = '';
+      
+      for(let x = 0; x < 50; x ++){
+        const selectNumber = getRandomIntInclusive(0, 242);
+        let lii = document.createElement("li");
+        lii.innerText = nameArray[selectNumber];
+
+        instructions.appendChild(lii);
+      };
+
+
+
     }
 
-
-    // Button function
-
-    function Click(){
-
-        const json = sessionStorage.getItem('countries_arr');
-        //exchange data
-        const list = JSON.parse(json);
-        const element = document;
-
-        const nameArray = list.map((i) => i.name);
-
-        const displayArray = [];
-        const instructions = document.querySelector('.instructions');
-        instructions.innerHTML = ' ';
-        //get 50 country
-        for (let i = 0; i < 50; i++) {
-
-          const selectNumber = getRandomIntInclusive(0, 242);
-          let el = document.createElement("li");
-          el.innerText = nameArray[selectNumber];
-
-          instructions.appendChild(el);
-
-        }
-
-
-      }
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+    }
 
   </script>
 </body>
