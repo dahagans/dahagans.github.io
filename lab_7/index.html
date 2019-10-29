@@ -17,21 +17,11 @@
   </div>
   <script>
     function loadData() {
-      fetch('https://api.umd.io/v0/bus/routes')
+      fetch('ajax_sample.json')
         .then(res => res.json())
         .then(res => {
-        const instructions = document.querySelector('.content');
-        instructions.innerHTML = '';
+          // you can now work in this area
 
-        for (let i = 0; i < 50; i++) {
-          const selectNumber = getRandomIntInclusive(0, 242);
-          let el = document.createElement("li");
-          el.innerText = nameArray[selectNumber];
-
-          instructions.appendChild(el);
-        };
-
-          
           return res;
         })
         .then(data => document.querySelector(".content").innerText = data);
