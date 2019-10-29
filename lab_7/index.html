@@ -22,11 +22,21 @@
         .then(res => {
           // you can now work in this area
 
+        console.log(res);
         
 
           return res;
         })
-        .then(data => document.querySelector(".content").innerText = data);
+
+        .then(data => document.querySelector(".content").innerText = data)
+        .then(data =>(document.querySelector('.content').innerText = data))
+    }
+
+
+    function find(){
+
+
+
     }
   </script>
 </body>
