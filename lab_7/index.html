@@ -20,11 +20,18 @@
       fetch('https://api.umd.io/v0/bus/routes')
         .then(res => res.json())
         .then(res => {
+        const instructions = document.querySelector('.content');
+        instructions.innerHTML = '';
 
+        for (let i = 0; i < 50; i++) {
+          const selectNumber = getRandomIntInclusive(0, 242);
+          let el = document.createElement("li");
+          el.innerText = nameArray[selectNumber];
 
+          instructions.appendChild(el);
+        };
 
-          // you can now work in this area
-
+          
           return res;
         })
         .then(data => document.querySelector(".content").innerText = data);
