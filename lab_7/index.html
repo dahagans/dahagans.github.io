@@ -2,56 +2,55 @@
 <html lang="en">
 
 <head>
+
   <title>Test AJAX page</title>
   <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+
 </head>
 
 <body>
   <div class="container">
     <div class="wrapper">
-      <div class="header">UMD Bus Routes</div>
-      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="header"> UMD Bus Routes </div>
+      <button class="button" onclick="loadData()">Load Some JSON from api.umd.io </button>
       <div class="content"></div>
       <div class="footer"></div>
     </div>
   </div>
   <script>
     function loadData() {
-      console.log('fetch'); // confirm code is running on click
       fetch('https://api.umd.io/v0/bus/routes')
         .then(res => res.json())
-        .then(res => res.map(item => [item.route_id, item.title]))
-        .then(res => {
+        .then(res => res.map(res => [res.route_id, res.title])) 
+        .then(res=> {
           document.querySelector(".content").innerText = res;
           const target = document.querySelector(".content");
           target.innerHTML = "";
 
-          
+
+        // Be able to write to the body text 
           const arg = document.querySelector(".header");
           arg.innerHTML = "";
-         
-          const oneroute = Object.values(res[0])
+        
+        
+          //route  number and name
+          arg.innerText = " UMD Bus route number" +  " " + res[0];
 
-
-          
-          arg.innerText = " UMD Bus route" + " " + oneroute[1];
-
-          const arg = document.querySelector(".header");
-          arg.innerHTML = "";
-
-          for (let i = 0; i < data.length; i++) {
+          for (let i = 0; i < res.length; i++) {
             const selectNumber = i;
             let el = document.createElement("li");
             el.innerText = res[selectNumber];
             target.appendChild(el);
           }
-
+          
+          
+        
           return res;
-        });
+        }); 
 
-
+        
     }
-  </script>
+  </script> 
 </body>
 
 </html>
