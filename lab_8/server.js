@@ -46,7 +46,11 @@ app.get('/api', (req, res) => {
   fetch(baseURL)
     .then((r) => r.json())
     .then((data) => {
+
       console.log(data);
+      counting .innerText = data.length;
+
+
       res.send({ data: data });
     })
     .catch((err) => {

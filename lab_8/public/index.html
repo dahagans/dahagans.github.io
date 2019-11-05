@@ -9,23 +9,39 @@
 <body>
   <div class="container">
     <div class="wrapper">
-      <div class="header">API Loader</div>
+      <div class="header">API Loader From UMD</div>
       <button class="button" onclick="loadData()">Load Some JSON from a server</button>
+
       <div class="content"></div>
-      <div class="footer"></div>
+      <div class="footer">  hello theher</div>
     </div>
   </div>
   <script>
     function loadData() {
       console.log('fetch'); // confirm code is running on click
-      fetch('https://api.umd.io/v0/courses/list')
+      fetch('/api')
         .then(res => res.json())
         .then(res => {
+
+          const arg = document.querySelector(".header");
+          arg.innerHTML = "";
+          arg.innerText = " Class filtering ";          
+
+          const counting = document.querySelector(".footer");
+          counting.innerHTML = "";
+
+          
+          
           console.log(res); // logging step to check what we got
           return res;
+
+
+
+
         })
         .then(res => res.data.map(c => c.route_id))
         .then(codes => document.querySelector(".content").innerText = codes);
+
     }
   </script>
 </body>
