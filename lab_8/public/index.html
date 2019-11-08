@@ -9,11 +9,10 @@
 <body>
   <div class="container">
     <div class="wrapper">
-      <div class="header">API Loader From UMD</div>
+      <div class="header">API Loader</div>
       <button class="button" onclick="loadData()">Load Some JSON from a server</button>
-
       <div class="content"></div>
-      <div class="footer">  hello theher</div>
+      <div class="footer"></div>
     </div>
   </div>
   <script>
@@ -23,26 +22,30 @@
         .then(res => res.json())
         .then(res => {
 
-          const arg = document.querySelector(".header");
-          arg.innerHTML = "";
-          arg.innerText = " Class filtering ";          
-
-          const counting = document.querySelector(".footer");
-          counting.innerHTML = "";
-
-          
-          
           console.log(res); // logging step to check what we got
           return res;
 
-
-
-
         })
-        .then(res => res.data.map(c => c.route_id))
-        .then(codes => document.querySelector(".content").innerText = codes);
+        .then(res=> res.data.filter(item => item.dept_id === 'INST') )
+        .then(res => res.map(item => [item.course_id + " " + item.name]))
+        .then(codes => {
+          document.querySelector(".content").innerText = codes;
+          const target = document.querySelector(".content");
+          target.innerHTML = "";
 
-    }
+
+        for (let i = 0; i < codes.length; i++) {
+            const selectNumber = i;
+            let el = document.createElement("ol");
+            el.innerText = codes[selectNumber];
+            target.appendChild(el);
+          }
+          return codes;
+    });
+
+  }
+
+    
   </script>
 </body>
 
