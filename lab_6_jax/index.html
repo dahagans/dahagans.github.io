@@ -24,17 +24,33 @@
       fetch('ajax_sample.json')
         .then(res => res.json())
         .then(data => data.map(c => c.code))
-        .then(data => {
-          str = "<ol>"
-          for (let i = 0; i < 15; i += 1){
-            listt = getRndInteger(0, 242);
-            str += "<li>" + data[listt] + "</li>";
-          }
-          srt += "</ol>";
-            document.querySelector(".content").innerText = str;
-    });
-            
-    }
+         .then(res=> {
+          document.querySelector(".content").innerText = res;
+          const target = document.querySelector(".content");
+          target.innerHTML = "";
+
+
+        // Be able to write to the body text 
+          const arg = document.querySelector(".header");
+          arg.innerHTML = "";
+        
+        
+          //route  number and name
+          arg.innerText = " UMD Bus route number" +  " " + res[0];
+
+          for (let i = 0; i < res.length; i++) {
+            const selectNumber = i;
+            let el = document.createElement("li");
+            el.innerText = res[selectNumber];
+            target.appendChild(el);
+          }
+          
+          
+        
+          return res;
+        }); 
+
+        
   </script>
 </body>
 
