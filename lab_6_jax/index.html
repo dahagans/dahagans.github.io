@@ -25,14 +25,14 @@
                 //.then(res => res.map(c => c.name))
                 .then(res => {
 
-                    const content = document.querySelector(".instructions");
-                    content.textContent = "";
+                    const target = document.querySelector(".instructions");
+                    tarhet.textContent = "";
 
                     for (let i = 0; i < 15; i++) {
                         const selectNumber = getRandomIntInclusive(0, 242);
                         let el = document.createElement("li");
                         el.innerText = res[selectNumber].code + " " + res[selectNumber].name;
-                        content.appendChild(el);
+                        target.appendChild(el);
                     }
                 });
 
